@@ -27,7 +27,6 @@ coverage/
 
 # === TypeScript ===
 *.tsbuildinfo
-next-env.d.ts
 
 # === Environment Variables ===
 .env
@@ -59,3 +58,7 @@ yarn-error.log*
 # === Optional: Include README, LICENSE, etc.
 !README.md
 !LICENSE
+!src/lib/
+
+# === Ignore generated files ===
+generated-invites.*
