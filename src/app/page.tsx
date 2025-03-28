@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Hero from "@/components/hero";
+import Countdown from "@/components/countdown";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center text-center py-20 px-6 space-y-6">
-      <h1 className="text-4xl font-serif font-bold text-primary">
-        Welcome to Our Wedding Website
-      </h1>
-      <p className="text-muted-foreground max-w-md">
-        We can&apos;t wait to celebrate with you. Use this site to RSVP, view
-        details, and more.
-      </p>
-    </section>
+    <div className="flex items-center justify-center min-h-[60vh] w-full px-4">
+      <Card className="w-full max-w-2xl border-muted bg-muted/40 shadow-md">
+        <CardContent className="">
+          <Hero />
+        </CardContent>
+        <CardContent className="bg-background/50 text-center p-4 border-t border-muted">
+          <Countdown />
+        </CardContent>
+      </Card>
+    </div>
   );
 }

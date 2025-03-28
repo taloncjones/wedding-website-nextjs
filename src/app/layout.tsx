@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import "@/app/globals.css";
 
-import { ClientSessionProvider } from "@/context/SessionContext";
+import { ClientSessionProvider } from "@/context/session-context";
 import { Toaster } from "@/components/ui/sonner";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import PageTransitionWrapper from "@/components/PageTransitionWrapper";
+import Navbar from "@/components/nav-bar";
+import Footer from "@/components/footer";
+import PageTransitionWrapper from "@/components/page-trasition-wrapper";
 import { getServerSession } from "@/lib/session";
 
 const playfair = Playfair_Display({

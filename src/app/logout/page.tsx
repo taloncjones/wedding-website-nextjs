@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Progress } from "@/components/ui/progress";
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/context/session-context";
 
 export default function SignedOutPage() {
   const router = useRouter();

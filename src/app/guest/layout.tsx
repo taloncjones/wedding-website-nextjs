@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/context/session-context";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";

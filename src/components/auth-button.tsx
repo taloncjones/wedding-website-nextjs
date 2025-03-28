@@ -3,16 +3,21 @@
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { setCookie } from "cookies-next";
-import { useSession } from "@/context/SessionContext";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+import { useSession } from "@/context/session-context";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function AuthButton() {
+interface AuthButtonProps {
+  className?: string;
+  isActive?: boolean; // Optional prop to indicate if the button is active
+}
+
+export default function AuthButton({
+  className = "",
+  isActive = false,
+}: AuthButtonProps) {
   const { session, loading, setSession } = useSession();
   const router = useRouter();
-
-  const commonButtonClasses = `${navigationMenuTriggerStyle()} min-w-[55px] h-9 px-4 py-2 text-sm text-center inline-flex items-center justify-center`;
 
   async function handleLogout(e: React.MouseEvent) {
     e.preventDefault();
@@ -36,6 +41,7 @@ export default function AuthButton() {
       initial={{ opacity: 0 }}
       animate={{ opacity: loading ? 0 : 1 }}
       transition={{ duration: 0.3 }}
+      className="relative inline-flex"
     >
       <AnimatePresence mode="wait" initial={false}>
         {loading ? (
@@ -43,7 +49,7 @@ export default function AuthButton() {
             key="loading"
             role="status"
             aria-label="Loading session"
-            className={`${commonButtonClasses} text-transparent cursor-wait bg-muted animate-pulse`}
+            className={`${className} text-transparent cursor-wait bg-muted animate-pulse`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -54,7 +60,7 @@ export default function AuthButton() {
           <motion.button
             key="logout"
             onClick={handleLogout}
-            className={commonButtonClasses}
+            className={`${className} w-full`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -69,11 +75,23 @@ export default function AuthButton() {
             exit={{ opacity: 0 }}
           >
             <Link href="/login">
-              <button className={commonButtonClasses}>Log In</button>
+              <button className={`${className} w-full`}>Log In</button>
             </Link>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {isActive && (
+        <motion.div
+          layoutId="nav-underline"
+          className="absolute left-0 right-0 -bottom-1 h-[2px] bg-primary rounded"
+          transition={{
+            type: "spring",
+            stiffness: 500,
+            damping: 30,
+          }}
+        />
+      )}
     </motion.div>
   );
 }

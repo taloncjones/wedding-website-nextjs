@@ -10,8 +10,8 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import AuthButton from "./AuthButton";
-import { useSession } from "@/context/SessionContext";
+import AuthButton from "./auth-button";
+import { useSession } from "@/context/session-context";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -38,7 +38,7 @@ export default function Navbar() {
           <span
             role="heading"
             aria-level={1}
-            className="text-4xl font-serif font-bold text-primary tracking-wide"
+            className="text-4xl font-header text-header tracking-wide"
           >
             Talon & Franchesca
           </span>
@@ -56,8 +56,10 @@ export default function Navbar() {
                     <Link href={href} legacyBehavior passHref>
                       <NavigationMenuLink
                         className={`${navigationMenuTriggerStyle()} ${
-                          isActive ? "text-primary" : "text-foreground"
-                        }`}
+                          isActive
+                            ? "text-secondary-foreground"
+                            : "text-primary-foreground"
+                        } text-body font-body hover:bg-secondary/30 focus:bg-secondary/0 transition-colors duration-200 rounded-md relative`}
                       >
                         {label}
                         {isActive && (
@@ -78,7 +80,14 @@ export default function Navbar() {
               })}
 
             <NavigationMenuItem className="w-[55px] justify-center">
-              <AuthButton />
+              <AuthButton
+                className={`${navigationMenuTriggerStyle()} ${
+                  pathname === "/logout" || pathname === "/login"
+                    ? "text-secondary-foreground"
+                    : "text-primary-foreground"
+                } text-body font-body hover:bg-secondary/30 focus:bg-secondary/0 transition-colors duration-200 rounded-md relative`}
+                isActive={pathname === "/logout" || pathname === "/login"}
+              />
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>

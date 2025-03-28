@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/context/session-context";
 import { SessionData } from "@/lib/session";
 
 export default function LoginPage() {

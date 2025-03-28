@@ -8,7 +8,7 @@ const config: Config = {
     extend: {
       colors: {
         background: "hsl(var(--background))",
-        text: "#5d4a3c",
+        foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -21,7 +21,6 @@ const config: Config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -50,8 +49,34 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-serif)", ...fontFamily.serif],
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+        serif: ["var(--font-header)", ...fontFamily.serif],
+        sans: ["var(--font-body)", ...fontFamily.sans],
+        body: "var(--font-body)",
+        header: "var(--font-header)",
+        subheader: "var(--font-subheader)",
+      },
+      fontSize: {
+        body: [
+          "var(--text-body-size)",
+          {
+            lineHeight: "var(--text-body-line-height)",
+            letterSpacing: "var(--text-body-letter-spacing)",
+          },
+        ],
+        header: [
+          "var(--text-header-size)",
+          {
+            lineHeight: "var(--text-header-line-height)",
+            letterSpacing: "var(--text-header-letter-spacing)",
+          },
+        ],
+        subheader: [
+          "var(--text-subheader-size)",
+          {
+            lineHeight: "var(--text-subheader-line-height)",
+            letterSpacing: "var(--text-subheader-letter-spacing)",
+          },
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",

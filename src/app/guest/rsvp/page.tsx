@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/context/session-context";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function GuestPage() {

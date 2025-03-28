@@ -1,6 +1,6 @@
 "use client";
 
-import { useSession } from "@/context/SessionContext";
+import { useSession } from "@/context/session-context";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function GuestPage() {
@@ -17,8 +17,12 @@ export default function GuestPage() {
 
   return (
     <div className="p-6">
-      <h1>Welcome, {session.name || session.email || "Guest"}</h1>
-      <p>Your RSVP status: {session.rsvp_status ? "Yes" : "No"}</p>
+      <h1 className="text-subheader font-subheader text-primary-foreground">
+        Welcome, {session.name || session.email || "Guest"}
+      </h1>
+      <p className="text-body font-body text-primary-foreground">
+        Your RSVP status: {session.rsvp_status ? "Yes" : "No"}
+      </p>
     </div>
   );
 }
